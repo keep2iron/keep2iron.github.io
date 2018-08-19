@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/08/19/ReactNative/</loc>
+    
+    <lastmod>2018-08-19T07:46:40.988Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/07/31/%E7%82%AB%E9%85%B7ViewPager%E6%8C%87%E7%A4%BA%E5%99%A8%E6%95%88%E6%9E%9C/</loc>
     
     <lastmod>2018-08-19T07:10:43.043Z</lastmod>
