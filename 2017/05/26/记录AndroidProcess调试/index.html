@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 记录AndroidProcess调试 · Hexo</title><meta name="description" content="记录AndroidProcess调试 - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="Hexo"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">记录AndroidProcess调试</h1><div class="post-info">May 26, 2017</div><div class="post-content"><blockquote>
+<p>记录AndroidProcess调试步骤</p>
+<p><strong>第一步</strong>在AnnoProcessor中设置断点</p>
+<p><img src="http://i.imgur.com/gWBxFFT.png" alt=""></p>
+<p><strong>第二步</strong>修改</p>
+<p>gradle.properties</p>
+<p><strong>第三步</strong>添加如下代码</p>
+<p>第一行的作用是允许gradle开启守护进程</p>
+<p>第二行代码是设置gradle连接的端口号.这里原先是设置为5005，但是由于报错，说端口号被占用，因此改为5010</p>
+<p><code>org.gradle.daemon=true</code></p>
+<p><code>org.gradle.jvmargs=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5010</code></p>
+<p><strong>第四步</strong>在上一步的基础上在as控制台运行如下命令：</p>
+<p><code>gradle --daemon</code></p>
+<p>你可能会有如下的报错：</p>
+<p><img src="http://i.imgur.com/gMRzcuZ.png" alt=""></p>
+<p><strong>少年莫慌，这是因为gradle没有在你的电脑中配置的缘故，因此可以将gradle改成gradlew！！！！！</strong></p>
+<p>gradlew相当于是gradle的一个包装，相当于接口，因此实现类是由，.gradle文件夹中的gradle-wrapper.properties中的distributionUrl后面指定的gradle版本决定的<strong>（PS:在这里可以看到面向接口的好处了吧）</strong></p>
+<p>运行完成之后，gradle就已经开启了守护进程，他会监听在我们刚刚配置的指定的端口号上</p>
+<p><strong>第五步</strong>配置AndroidStudio</p>
+<p><img src="http://i.imgur.com/lmCs3Wd.png" alt=""></p>
+<p><img src="http://i.imgur.com/B1tGwYV.png" alt=""></p>
+<p><img src="http://i.imgur.com/y0vgumU.png" alt=""></p>
+<p><strong>然后点击ok就可以了</strong>然后界面上就有这个配置项了，下面开始运行它，点击那个小虫子的图标，debug模式运行</p>
+<p><img src="http://i.imgur.com/RQNGkba.png" alt=""></p>
+<p><img src="http://i.imgur.com/hmokmXh.png" alt=""></p>
+<p><strong>第五步</strong>最后一步啦，在命令行执行如下命令，让其进行编译，因此我们</p>
+<p><code>gradle clean assembleDebug</code></p>
+<p>在运行的过程中</p>
+<p><img src="http://i.imgur.com/jivxUeh.png" alt=""></p>
+<p>这里可以看到我们的断点执行啦！！ok到此AnnotationProcessor的调试就到此结束了~！</p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/05/28/编写一个编译时注入框架/" class="prev">上一篇</a><a href="/2017/03/13/View Chapter1/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'keep2iron';
+var disqus_identifier = '2017/05/26/记录AndroidProcess调试/';
+var disqus_title = '记录AndroidProcess调试';
+var disqus_url = 'http://yoursite.com/2017/05/26/记录AndroidProcess调试/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//keep2iron.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2018 <a href="http://yoursite.com">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

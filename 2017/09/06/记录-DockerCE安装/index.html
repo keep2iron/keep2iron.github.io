@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 记录-DockerCE安装 · Hexo</title><meta name="description" content="记录-DockerCE安装 - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="Hexo"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">记录-DockerCE安装</h1><div class="post-info">Sep 6, 2017</div><div class="post-content"><p><center><img src="https://i.imgur.com/6MKfO7k.jpg" alt=""></center></p>
+<blockquote>
+<p>配置如下:<br>Ubuntu 16.04LTS(64位版本)</p>
+<p>本文的大部分步骤来自于docker的官方文档<br><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/</a></p>
+<p><strong>Docker是一种容器化的一种技术</strong></p>
+</blockquote>
+<p>由于docker目前分为了两个版本一个是商业版，一个是社区版，因此这里我们选择的是社区版也就是CE版本。</p>
+<h5 id="Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。"><a href="#Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。" class="headerlink" title="Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。"></a>Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。</h5><h4 id="1-docker-ce安装的运行环境"><a href="#1-docker-ce安装的运行环境" class="headerlink" title="1.docker ce安装的运行环境"></a>1.docker ce安装的运行环境</h4><p>DockerCE的安装版本的要求</p>
+<ul>
+<li>Zesty 17.04</li>
+<li>Xenial 16.04 (LTS)</li>
+<li>Trusty 14.04 (LTS)</li>
+</ul>
+<p>如果你的系统是14.04版本则需要安装linux-image-extra-*，因为docker需要这两个包。</p>
+<pre><code>sudo apt-get update
+
+sudo apt-get install \
+linux-image-extra-$(uname -r) \
+linux-image-extra-virtual
+</code></pre><h4 id="2-删除之前版本的docker"><a href="#2-删除之前版本的docker" class="headerlink" title="2.删除之前版本的docker"></a>2.删除之前版本的docker</h4><p>之前版本的docker叫做docker或者docker-engine，如果之前安装过，卸载它们</p>
+<pre><code>sudo apt-get remove docker docker-engine docker.io
+</code></pre><p>现在我们安装的docker的包名叫做<strong>docker-ce</strong></p>
+<h4 id="3-安装docker-ce"><a href="#3-安装docker-ce" class="headerlink" title="3.安装docker-ce"></a>3.安装docker-ce</h4><p>1.更新包的索引</p>
+<pre><code>sudo apt-get update
+</code></pre><p>2.安装允许让apt允许的ssl仓库的包(ps:\代表这句脚本没有写完，进行换行)</p>
+<pre><code>sudo apt-get install \
+apt-transport-https \
+ca-certificates \
+curl \
+software-properties-common
+</code></pre><p>3.添加Docker GPG Key</p>
+<pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre><p>4.设置仓库地址,这里设置的x86的仓库地址</p>
+<pre><code>sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
+</code></pre><p>5.安装<br>ubuntu14.04以上的版本都是自带docker安装包的,所以可以直接安装,但是这个一般不是最新版本,所以一般需要进行更新源</p>
+<pre><code>sudo apt-get update
+sudo apt-get install docker.io
+</code></pre><p>2.安装完成了之后可以通过以下命令进行查看安装版本<br>    docker -v</p>
+<p>3.下载docker的镜像</p>
+<pre><code>docker run ubuntu:15.10 /bin/echo &quot;Hello world&quot;
+</code></pre><h5 id="重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud"><a href="#重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud" class="headerlink" title="重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud"></a>重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud</h5><p>如果本地没有ubuntu 15.10的镜像，那么docker会去从仓库中下载，但是下载的速度很慢。因此这里使用了Docker镜像的加速器</p>
+<p><a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="noopener">https://www.daocloud.io/mirror#accelerator-doc</a></p>
+<p>通过下面的命令即可完成配置加速器。</p>
+<pre><code>curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d606b909.m.daocloud.io
+</code></pre></div></article></div></main><footer><div class="paginator"><a href="/2018/04/29/okhttp源码解析/" class="prev">上一篇</a><a href="/2017/07/31/炫酷ViewPager指示器效果/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'keep2iron';
+var disqus_identifier = '2017/09/06/记录-DockerCE安装/';
+var disqus_title = '记录-DockerCE安装';
+var disqus_url = 'http://yoursite.com/2017/09/06/记录-DockerCE安装/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//keep2iron.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2018 <a href="http://yoursite.com">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
