@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-19T07:46:40.988Z</updated>
+  <updated>2018-08-19T07:54:51.126Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,37 @@
     <link href="http://yoursite.com/2018/08/19/ReactNative/"/>
     <id>http://yoursite.com/2018/08/19/ReactNative/</id>
     <published>2018-08-19T07:46:34.000Z</published>
-    <updated>2018-08-19T07:46:40.988Z</updated>
+    <updated>2018-08-19T07:54:51.126Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><h1 id="React-Native-vs-Native"><a href="#React-Native-vs-Native" class="headerlink" title="React Native vs Native"></a>React Native vs Native</h1><p></p><h3>优势</h3><p></p><ul><li><p><strong>某些方面上开发效率高</strong> 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。</p></li><li><p><strong>复杂的布局也能得心应手。</strong> Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行<strong>自定义View</strong>，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。</p></li><li><p><strong>开发效率快。</strong> 由于js是弱类型语言，在ReactNative中使用了基于es6的语法，因此可以大大提高了js面向对象的编程的能力。而且语法糖丰富，第三方扩展多，使用npm基本上什么库都能够找到你想要的第三方库</p></li><li><p><strong>learn once write everywhere!!</strong> 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。</p></li><li><p><strong>跨平台</strong> 这一点恐怕是选择React Native的一个非常重要的原因。、</p></li></ul><p></p><h3>不足</h3><p></p><ul><li><p><strong>React Native更新太快</strong> 通常我们说软件更新快是一件好事情，但是对于咱们开发React Native来说的话确实有点….(学不动.png)，更新太快会有一些库的兼容问题，因此很可能半年之前写的项目不能很好的运行在最新的React Native的版本之上。（相信React Native后面能够稳定下来）</p></li><li><p><strong>第三方库的质量问题</strong> 本着不重复造轮子的原则，我们一般都会或多或少的引入第三方库。对于React Native来说的话确实优秀的第三方库太少了，一般很难满足自己的需求，因此只能读其代码进行定制化的改造。这一点也确实是由于精通Android 和ios以及Rn的开发者比较少，很少能够进行全面的编写完美的跨平台组件。（基于稳定下来之后，我想这个问题也能够得到充分的解决）</p></li><li><p><strong>React Native稀奇古怪的问题还是不少</strong> 这一点上主要在于刚刚接触React Native的时候对于语法以及开发项目的不理解时导致的问题挺多的。（没办法只能说坑踩的多了，你就是大佬了）</p></li><li><p><strong>成也js败也js</strong> 这一点只能代表我个人观点，js的动态能力很强，在代码的编写上可以说是每一个人都有心中自己的最佳实践。（当然了客观上我们还是需要多学习像airbnb等这些大公司编写的优秀的代码）在js中，当我们要调用别人的库的时候我们只能够进行查找文档或者找到对应的博客进行学习。对于我这种从java转过来的编程者更倾向于希望阅读代码的api注释以及传入参数的限制等等，这样的话对于开发效率的提升也是不小的，而且可以更快的上手。（不过对于js这种动态类型来说，TypeScript（它不是一个库，应该说是js的另外一种生态了）、Flow这种可以帮助js进行类型检查的库或者生态能够更好的解决这个问题了）</p></li></ul><h1 id="原有Android项目集成ReactNative"><a href="#原有Android项目集成ReactNative" class="headerlink" title="原有Android项目集成ReactNative"></a>原有Android项目集成ReactNative</h1><h1 id="自定义跳转规则"><a href="#自定义跳转规则" class="headerlink" title="自定义跳转规则"></a>自定义跳转规则</h1>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p><p></p><h3>优势</h3><p></p><ul><li><p><strong>某些方面上开发效率高</strong> 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。</p></li><li><p><strong>复杂的布局也能得心应手。</strong> Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行<strong>自定义View</strong>，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。</p></li><li><p><strong>开发效率快。</strong> 由于js是弱类型语言，在ReactNative中使用了基于es6的语法，因此可以大大提高了js面向对象的编程的能力。而且语法糖丰富，第三方扩展多，使用npm基本上什么库都能够找到你想要的第三方库</p></li><li><p><strong>learn once write everywhere!!</strong> 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。</p></li><li><p><strong>跨平台</strong> 这一点恐怕是选择React Native的一个非常重要的原因。、</p></li></ul><p></p><h3>不足</h3><p></p><ul><li><p><strong>React Native更新太快</strong> 通常我们说软件更新快是一件好事情，但是对于咱们开发React Native来说的话确实有点….(学不动.png)，更新太快会有一些库的兼容问题，因此很可能半年之前写的项目不能很好的运行在最新的React Native的版本之上。（相信React Native后面能够稳定下来）</p></li><li><p><strong>第三方库的质量问题</strong> 本着不重复造轮子的原则，我们一般都会或多或少的引入第三方库。对于React Native来说的话确实优秀的第三方库太少了，一般很难满足自己的需求，因此只能读其代码进行定制化的改造。这一点也确实是由于精通Android 和ios以及Rn的开发者比较少，很少能够进行全面的编写完美的跨平台组件。（基于稳定下来之后，我想这个问题也能够得到充分的解决）</p></li><li><p><strong>React Native稀奇古怪的问题还是不少</strong> 这一点上主要在于刚刚接触React Native的时候对于语法以及开发项目的不理解时导致的问题挺多的。（没办法只能说坑踩的多了，你就是大佬了）</p></li><li><p><strong>成也js败也js</strong> 这一点只能代表我个人观点，js的动态能力很强，在代码的编写上可以说是每一个人都有心中自己的最佳实践。（当然了客观上我们还是需要多学习像airbnb等这些大公司编写的优秀的代码）在js中，当我们要调用别人的库的时候我们只能够进行查找文档或者找到对应的博客进行学习。对于我这种从java转过来的编程者更倾向于希望阅读代码的api注释以及传入参数的限制等等，这样的话对于开发效率的提升也是不小的，而且可以更快的上手。（不过对于js这种动态类型来说，TypeScript（它不是一个库，应该说是js的另外一种生态了）、Flow这种可以帮助js进行类型检查的库或者生态能够更好的解决这个问题了）</p></li></ul><a id="more"></a><h1 id="原有Android项目集成ReactNative"><a href="#原有Android项目集成ReactNative" class="headerlink" title="原有Android项目集成ReactNative"></a>原有Android项目集成ReactNative</h1><h1 id="自定义跳转规则"><a href="#自定义跳转规则" class="headerlink" title="自定义跳转规则"></a>自定义跳转规则</h1>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;React-Native-vs-Native&quot;&gt;&lt;a href=&quot;#React-Native-vs-Native&quot; class=&quot;headerlink&quot; title=&quot;React Native vs Native&quot;&gt;&lt;/a&gt;Re
-      
+      &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/wdMolXp.png&quot; width=&quot;680px&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;优势&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;某些方面上开发效率高&lt;/strong&gt; 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;复杂的布局也能得心应手。&lt;/strong&gt; Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行&lt;strong&gt;自定义View&lt;/strong&gt;，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;开发效率快。&lt;/strong&gt; 由于js是弱类型语言，在ReactNative中使用了基于es6的语法，因此可以大大提高了js面向对象的编程的能力。而且语法糖丰富，第三方扩展多，使用npm基本上什么库都能够找到你想要的第三方库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;learn once write everywhere!!&lt;/strong&gt; 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;跨平台&lt;/strong&gt; 这一点恐怕是选择React Native的一个非常重要的原因。、&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt;不足&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;React Native更新太快&lt;/strong&gt; 通常我们说软件更新快是一件好事情，但是对于咱们开发React Native来说的话确实有点….(学不动.png)，更新太快会有一些库的兼容问题，因此很可能半年之前写的项目不能很好的运行在最新的React Native的版本之上。（相信React Native后面能够稳定下来）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;第三方库的质量问题&lt;/strong&gt; 本着不重复造轮子的原则，我们一般都会或多或少的引入第三方库。对于React Native来说的话确实优秀的第三方库太少了，一般很难满足自己的需求，因此只能读其代码进行定制化的改造。这一点也确实是由于精通Android 和ios以及Rn的开发者比较少，很少能够进行全面的编写完美的跨平台组件。（基于稳定下来之后，我想这个问题也能够得到充分的解决）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;React Native稀奇古怪的问题还是不少&lt;/strong&gt; 这一点上主要在于刚刚接触React Native的时候对于语法以及开发项目的不理解时导致的问题挺多的。（没办法只能说坑踩的多了，你就是大佬了）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;成也js败也js&lt;/strong&gt; 这一点只能代表我个人观点，js的动态能力很强，在代码的编写上可以说是每一个人都有心中自己的最佳实践。（当然了客观上我们还是需要多学习像airbnb等这些大公司编写的优秀的代码）在js中，当我们要调用别人的库的时候我们只能够进行查找文档或者找到对应的博客进行学习。对于我这种从java转过来的编程者更倾向于希望阅读代码的api注释以及传入参数的限制等等，这样的话对于开发效率的提升也是不小的，而且可以更快的上手。（不过对于js这种动态类型来说，TypeScript（它不是一个库，应该说是js的另外一种生态了）、Flow这种可以帮助js进行类型检查的库或者生态能够更好的解决这个问题了）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -45,16 +65,15 @@
     <link href="http://yoursite.com/2018/04/29/okhttp%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
     <id>http://yoursite.com/2018/04/29/okhttp源码解析/</id>
     <published>2018-04-29T02:41:03.000Z</published>
-    <updated>2018-04-29T04:36:48.256Z</updated>
+    <updated>2018-08-19T08:02:48.941Z</updated>
     
-    <content type="html"><![CDATA[<p>安卓开发领域上<a href="https://github.com/square/okhttp" target="_blank" rel="noopener">Okhttp</a>、<a href="https://github.com/square/retrofit" target="_blank" rel="noopener">Retrofit</a>、<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava</a>无疑已经成为了开发过程中的三板斧。在安卓6.0中谷歌删除了HttpClient的相关代码，并且在系统层面上使用了OkHttp，因此足以说明了这个框架的优秀。</p><blockquote><p><a href="https://github.com/android-cn/android-open-project-analysis" target="_blank" rel="noopener">我们不重复造轮子不表示我们不需要知道轮子该怎么造及如何更好的造!</a> </p></blockquote><p>用了OkHttp已经一年多之后，现在是时候来一探究竟了!!</p><h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/pmIxXFe.png" alt=""></p><p>安卓开发领域上<a href="https://github.com/square/okhttp" target="_blank" rel="noopener">Okhttp</a>、<a href="https://github.com/square/retrofit" target="_blank" rel="noopener">Retrofit</a>、<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava</a>无疑已经成为了开发过程中的三板斧。在安卓6.0中谷歌删除了HttpClient的相关代码，并且在系统层面上使用了OkHttp，因此足以说明了这个框架的优秀。</p><p><a href="https://github.com/android-cn/android-open-project-analysis" target="_blank" rel="noopener">我们不重复造轮子不表示我们不需要知道轮子该怎么造及如何更好的造!</a> </p><a id="more"></a><p>用了OkHttp已经一年多之后，现在是时候来一探究竟了!!</p><h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;安卓开发领域上&lt;a href=&quot;https://github.com/square/okhttp&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Okhttp&lt;/a&gt;、&lt;a href=&quot;https://github.com/square/retrofit&quot; 
-      
+      &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/pmIxXFe.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;安卓开发领域上&lt;a href=&quot;https://github.com/square/okhttp&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Okhttp&lt;/a&gt;、&lt;a href=&quot;https://github.com/square/retrofit&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Retrofit&lt;/a&gt;、&lt;a href=&quot;https://github.com/ReactiveX/RxJava&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;RxJava&lt;/a&gt;无疑已经成为了开发过程中的三板斧。在安卓6.0中谷歌删除了HttpClient的相关代码，并且在系统层面上使用了OkHttp，因此足以说明了这个框架的优秀。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/android-cn/android-open-project-analysis&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;我们不重复造轮子不表示我们不需要知道轮子该怎么造及如何更好的造!&lt;/a&gt; &lt;/p&gt;
     
     </summary>
     
@@ -66,19 +85,18 @@
     <link href="http://yoursite.com/2017/09/06/%E8%AE%B0%E5%BD%95-DockerCE%E5%AE%89%E8%A3%85/"/>
     <id>http://yoursite.com/2017/09/06/记录-DockerCE安装/</id>
     <published>2017-09-06T01:52:58.000Z</published>
-    <updated>2017-09-06T01:55:44.126Z</updated>
+    <updated>2018-08-19T08:06:04.863Z</updated>
     
-    <content type="html"><![CDATA[<p><center><img src="https://i.imgur.com/6MKfO7k.jpg" alt=""></center></p><blockquote><p>配置如下:<br>Ubuntu 16.04LTS(64位版本)</p><p>本文的大部分步骤来自于docker的官方文档<br><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/</a></p><p><strong>Docker是一种容器化的一种技术</strong></p></blockquote><p>由于docker目前分为了两个版本一个是商业版，一个是社区版，因此这里我们选择的是社区版也就是CE版本。</p><h5 id="Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。"><a href="#Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。" class="headerlink" title="Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。"></a>Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。</h5><h4 id="1-docker-ce安装的运行环境"><a href="#1-docker-ce安装的运行环境" class="headerlink" title="1.docker ce安装的运行环境"></a>1.docker ce安装的运行环境</h4><p>DockerCE的安装版本的要求</p><ul><li>Zesty 17.04</li><li>Xenial 16.04 (LTS)</li><li>Trusty 14.04 (LTS)</li></ul><p>如果你的系统是14.04版本则需要安装linux-image-extra-*，因为docker需要这两个包。</p><pre><code>sudo apt-get updatesudo apt-get install \linux-image-extra-$(uname -r) \linux-image-extra-virtual</code></pre><h4 id="2-删除之前版本的docker"><a href="#2-删除之前版本的docker" class="headerlink" title="2.删除之前版本的docker"></a>2.删除之前版本的docker</h4><p>之前版本的docker叫做docker或者docker-engine，如果之前安装过，卸载它们</p><pre><code>sudo apt-get remove docker docker-engine docker.io</code></pre><p>现在我们安装的docker的包名叫做<strong>docker-ce</strong></p><h4 id="3-安装docker-ce"><a href="#3-安装docker-ce" class="headerlink" title="3.安装docker-ce"></a>3.安装docker-ce</h4><p>1.更新包的索引</p><pre><code>sudo apt-get update</code></pre><p>2.安装允许让apt允许的ssl仓库的包(ps:\代表这句脚本没有写完，进行换行)</p><pre><code>sudo apt-get install \apt-transport-https \ca-certificates \curl \software-properties-common</code></pre><p>3.添加Docker GPG Key</p><pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></pre><p>4.设置仓库地址,这里设置的x86的仓库地址</p><pre><code>sudo add-apt-repository \   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \   $(lsb_release -cs) \   stable&quot;</code></pre><p>5.安装<br>ubuntu14.04以上的版本都是自带docker安装包的,所以可以直接安装,但是这个一般不是最新版本,所以一般需要进行更新源</p><pre><code>sudo apt-get updatesudo apt-get install docker.io</code></pre><p>2.安装完成了之后可以通过以下命令进行查看安装版本<br>    docker -v</p><p>3.下载docker的镜像</p><pre><code>docker run ubuntu:15.10 /bin/echo &quot;Hello world&quot;</code></pre><h5 id="重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud"><a href="#重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud" class="headerlink" title="重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud"></a>重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud</h5><p>如果本地没有ubuntu 15.10的镜像，那么docker会去从仓库中下载，但是下载的速度很慢。因此这里使用了Docker镜像的加速器</p><p><a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="noopener">https://www.daocloud.io/mirror#accelerator-doc</a></p><p>通过下面的命令即可完成配置加速器。</p><pre><code>curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d606b909.m.daocloud.io</code></pre>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/EN8O4bt.png" width="680"></p><p>配置如下:<br>Ubuntu 16.04LTS(64位版本)</p><p>本文的大部分步骤来自于docker的官方文档</p><blockquote><p><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/</a></p></blockquote><a id="more"></a><p><strong>Docker是一种容器化的一种技术</strong></p><p>由于docker目前分为了两个版本一个是商业版，一个是社区版，因此这里我们选择的是社区版也就是CE版本。</p><h5 id="Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。"><a href="#Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。" class="headerlink" title="Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。"></a>Docker是一种类似虚拟机的一种技术，但是比虚拟机要轻量的多。</h5><h4 id="1-docker-ce安装的运行环境"><a href="#1-docker-ce安装的运行环境" class="headerlink" title="1.docker ce安装的运行环境"></a>1.docker ce安装的运行环境</h4><p>DockerCE的安装版本的要求</p><ul><li>Zesty 17.04</li><li>Xenial 16.04 (LTS)</li><li>Trusty 14.04 (LTS)</li></ul><p>如果你的系统是14.04版本则需要安装linux-image-extra-*，因为docker需要这两个包。</p><pre><code>sudo apt-get updatesudo apt-get install \linux-image-extra-$(uname -r) \linux-image-extra-virtual</code></pre><h4 id="2-删除之前版本的docker"><a href="#2-删除之前版本的docker" class="headerlink" title="2.删除之前版本的docker"></a>2.删除之前版本的docker</h4><p>之前版本的docker叫做docker或者docker-engine，如果之前安装过，卸载它们</p><pre><code>sudo apt-get remove docker docker-engine docker.io</code></pre><p>现在我们安装的docker的包名叫做<strong>docker-ce</strong></p><h4 id="3-安装docker-ce"><a href="#3-安装docker-ce" class="headerlink" title="3.安装docker-ce"></a>3.安装docker-ce</h4><p>1.更新包的索引</p><pre><code>sudo apt-get update</code></pre><p>2.安装允许让apt允许的ssl仓库的包(ps:\代表这句脚本没有写完，进行换行)</p><pre><code>sudo apt-get install \apt-transport-https \ca-certificates \curl \software-properties-common</code></pre><p>3.添加Docker GPG Key</p><pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></pre><p>4.设置仓库地址,这里设置的x86的仓库地址</p><pre><code>sudo add-apt-repository \   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \   $(lsb_release -cs) \   stable&quot;</code></pre><p>5.安装<br>ubuntu14.04以上的版本都是自带docker安装包的,所以可以直接安装,但是这个一般不是最新版本,所以一般需要进行更新源</p><pre><code>sudo apt-get updatesudo apt-get install docker.io</code></pre><p>2.安装完成了之后可以通过以下命令进行查看安装版本<br>    docker -v</p><p>3.下载docker的镜像</p><pre><code>docker run ubuntu:15.10 /bin/echo &quot;Hello world&quot;</code></pre><h5 id="重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud"><a href="#重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud" class="headerlink" title="重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud"></a>重点来了！！镜像地址默认是国外的dockerhub，国内速度较慢，因此需要一个国内镜像去加速，这里使用的是的DaoCloud</h5><p>如果本地没有ubuntu 15.10的镜像，那么docker会去从仓库中下载，但是下载的速度很慢。因此这里使用了Docker镜像的加速器</p><p><a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="noopener">https://www.daocloud.io/mirror#accelerator-doc</a></p><p>通过下面的命令即可完成配置加速器。</p><pre><code>curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d606b909.m.daocloud.io</code></pre>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;&lt;center&gt;&lt;img src=&quot;https://i.imgur.com/6MKfO7k.jpg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;blockquote&gt;
+      &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/EN8O4bt.png&quot; width=&quot;680&quot;&gt;&lt;/p&gt;
 &lt;p&gt;配置如下:&lt;br&gt;Ubuntu 16.04LTS(64位版本)&lt;/p&gt;
-&lt;p&gt;本文的大部分步骤来自
-      
+&lt;p&gt;本文的大部分步骤来自于docker的官方文档&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -174,49 +192,6 @@
     
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git</title>
-    <link href="http://yoursite.com/2017/01/09/git/"/>
-    <id>http://yoursite.com/2017/01/09/git/</id>
-    <published>2017-01-09T07:55:34.000Z</published>
-    <updated>2017-05-26T07:42:25.502Z</updated>
-    
-    <content type="html"><![CDATA[<div style="text-align:center"><span style="text-weight:600;text-size:40px;">Read the fuck source code</span></div><h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p><strong>git</strong>是什么东东，吼吼，我不会告诉你它就是地表最强的分布式管理系统。</p><p>很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。</p><p>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？</p><p>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！</p><p>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p><p>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p><p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。</p><p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：</p><p>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。</p><p>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。</p><p>历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。</p><div style="text-align:right;">以上出自<a href="http://www.liaoxuefeng.com" target="_blank" rel="noopener">廖雪峰老师</a>的<strong>git</strong>博文</div><hr><p>下面让我们来进入git的世界，来领略一下这个最好的分布式系统的魅力。</p><p>跟着下面的步骤走，我相信肯定没有问题。（默认已经是安装了git，这里我相信大家应该都没有什么问题。）</p><blockquote><p>1.开启一个控制台，找一个文件夹，git init                        –第一步就是找到我们的一个工作目录来进行初始化</p></blockquote><blockquote><p>2.在文件夹下建立一个readme.txt,然后输入命令git add readme.txt        –这就是所谓的第二步，添加一个文件</p></blockquote><blockquote><p>3.在控制台中继续输入命令git commit -m “init commit”                –第三步就是对所添加的文件进行提交。</p></blockquote><p>好了，以上的过程就是一个基本的git 提交文件的流程，那么我想看到这里，屏幕外的你肯定会说，你这TMD在逗我呢！！！</p><p>哈哈哈，以上的步骤的只是在你的机器上提交了文件，可是git可是分布式的呀，那么应该需要一台服务器作为我们文件交换的一个枢纽吧，在这里如果你对github没有一点了解的话，那么就先去github注册一个账号再说吧！</p><hr><p>如果在这里你没有注册github账号，那么你将没有办法体验到git真正的强大之处了。</p><blockquote><p><strong>这里是作为重要的第一步。点击如下图所示的这个按钮，进入一个页面填写完成这个仓库的相关信息之后，创建仓库。</strong>(Ps:在这里我也是跟大家共同建立了一个我们git专属的练习仓库)</p><p><img src="http://ojg4zrjfe.bkt.clouddn.com/git_step1.png" alt="github step 1"></p><p><img src="http://ojg4zrjfe.bkt.clouddn.com/CreateRepository.png" alt="repositoryCreate"></p></blockquote><blockquote><p><strong>好了这时候我们就拥有了自己的专属的小空间啦！</strong></p></blockquote><p>通过下面的指令便可以进行提交操作啦</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"# GitTest"</span> &gt;&gt; README.md<span class="comment">//创建ReadMe.MD文件</span></span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br><span class="line">git remote add origin git@github.com:keep2iron/GitTest.git<span class="comment">//这里需要改成你自己的git仓库地址</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;div style=&quot;text-align:center&quot;&gt;&lt;span style=&quot;text-weight:600;text-size:40px;&quot;&gt;Read the fuck source code&lt;/span&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;Overview&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-    
-      <category term="Simple Record" scheme="http://yoursite.com/tags/Simple-Record/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lorem ipsum dolor</title>
-    <link href="http://yoursite.com/2015/12/31/Lorem%20ipsum%20dolor/"/>
-    <id>http://yoursite.com/2015/12/31/Lorem ipsum dolor/</id>
-    <published>2015-12-31T06:49:13.000Z</published>
-    <updated>2018-08-19T05:51:44.859Z</updated>
-    
-    <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, non numquam saepe ex ut. Deleniti culpa inventore consectetur nam saepe!</p><a id="more"></a><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, non numquam saepe ex ut. Deleniti culpa inventore consectetur nam saepe!</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, non numquam saepe ex ut. Deleniti culpa inventore consectetur nam saepe!&lt;/p&gt;
-    
-    </summary>
-    
     
   </entry>
   
