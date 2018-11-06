@@ -1,9 +1,40 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Keep2iron's Road to development</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://keep2iron.github.io/atom.xml" title="Keep2iron's Road to development"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link active">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/Keep2iron" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/keep2iron" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/08/19/大话自定义view(一)/" class="post-title-link">大话自定义view(1)</a></h2><div class="post-info">Aug 19, 2018</div><div class="post-content"><h5>出师不利</h5>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Keep2iron's Road to development</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://keep2iron.github.io/atom.xml" title="Keep2iron's Road to development"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link active">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/Keep2iron" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/keep2iron" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/11/06/React-Native状态管理框架mobx/" class="post-title-link">React-Native状态管理框架mobx实战</a></h2><div class="post-info">Nov 6, 2018</div><div class="post-content"><p><img src="https://cn.mobx.js.org/flow.png" width="680px"></p>
+<blockquote>
+<p>文章中的代码基于 ract-native 0.57.1编写</p>
+</blockquote>
+<p><a href="https://cn.mobx.js.org/" target="_blank" rel="noopener">MobX</a> 是一个经过战火洗礼的库，它通过透明的函数响应式编程(transparently applying functional reactive programming - TFRP)使得状态管理变得简单和可扩展。MobX背后的哲学很简单:</p>
+<p><em>任何源自应用状态的东西都应该自动地获得。</em></p>
+<p>上面提到了一个重要的关键点 <a href="https://zh.wikipedia.org/wiki/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B" target="_blank" rel="noopener"><em>响应式编程</em></a>。</p>
+<h4>响应式编程</h4>
 
-<p>小艾从新兵训练营毕业，在训练营中学习不少编程方面的知识，学着编写了不少Android方面的小程序，他踌躇满志一心想要报考<em>Android调查兵团</em>。终于当投递了无数次申请了之后，调查兵团准许了小艾的申请，并给与了他一次面试的机会。</p>
-<p>到了要进行面试的日子，考官发放了一个题目，上面写道：“<strong>请编写一个如下图的自定义控件</strong>”</p>
-<p><img src="https://i.imgur.com/X1ZyPpl.png" alt="pic1"></p></div><a href="/2018/08/19/大话自定义view(一)/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/08/19/ReactNative/" class="post-title-link">React Native vs Native</a></h2><div class="post-info">Aug 19, 2018</div><div class="post-content"><p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p>
-<h1 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h1><ul>
+<ul>
+<li><p>面向数据</p>
+</li>
+<li><p>计算模型会自动将变化的值通过数据流进行传播</p>
+</li>
+</ul>
+<p>mobx充分体现了上面提到的这两点，那么接下来的问题是….</p>
+<h4>如何上手mobx？</h4></div><a href="/2018/11/06/React-Native状态管理框架mobx/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/11/04/React-Native简单原理讨论/" class="post-title-link">React-Native原理的简单讨论</a></h2><div class="post-info">Nov 4, 2018</div><div class="post-content"><blockquote>
+<p>文章中的代码基于 ract-native 0.57.1进行编写</p>
+</blockquote>
+<p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p>
+<h4>Android</h4>
+
+<ul>
+<li><p>interface ReactApplication<br>该类用于获取一个默认的ReactHost实例对象</p>
+</li>
+<li><p>class ReactHost<br>包含ReactInstanceManager对象的一个简单的类</p>
+</li>
+<li><p><strong>class ReactInstanceManager</strong><br>该类用于管理CatalystInstance实力对象，配合ReactRootView管理View的创建与生命周期等功能。</p>
+</li>
+<li><p><strong>class ReactRootView</strong><br>ReactRootView是Catalyst的主视图，提供侦听大小更改的功能，以便UI管理器可以重新布局其元素。它委托处理自身和子视图的触摸事件，并使用JSTouchDispatcher将这些事件发送给JS。</p>
+</li>
+<li><p><strong>class CatalystInstance</strong><br>用于js与原生之间的通信管理类</p>
+</li>
+<li><p><strong>JavaScriptModule/NativeModule</strong><br>JavaScriptModule是JS Module，负责JS到Java的映射调用格式声明，由CatalystInstance统一管理。<br>NativeModule是ava Module，负责Java到Js的映射调用格式声明，由CatalystInstance统一管理。<br>AppRegistry、DeviceEventEmitter通过继承JavaScriptModule，然后声明相关方法即可调用。例如通过reactContext.getJSModule AppRegistry.class 方法获取AppRegistry对象即可调用js端暴露的方法。通过继承NativeModule然后编写方法并添加<strong>@ReactMethod</strong>注解即从native端暴露给js端调用。</p></div><a href="/2018/11/04/React-Native简单原理讨论/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/11/03/React-Native跨平台技术选型/" class="post-title-link">React-Native跨平台技术选型</a></h2><div class="post-info">Nov 3, 2018</div><div class="post-content"><p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p>
+<h1 id="跨平台技术选型"><a href="#跨平台技术选型" class="headerlink" title="跨平台技术选型"></a>跨平台技术选型</h1><h4>React-Native的优势</h4>
+
+<ul>
 <li><p><strong>某些方面上开发效率高</strong> 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。</p>
 </li>
 <li><p><strong>复杂的布局也能得心应手。</strong> Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行<strong>自定义View</strong>，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。</p>
@@ -13,17 +44,6 @@
 <li><p><strong>learn once write everywhere!!</strong> 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。</p>
 </li>
 <li><p><strong>跨平台</strong> 这一点恐怕是选择React Native的一个非常重要的原因。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--------------js--------------</span><br><span class="line">              ||</span><br><span class="line">              \/</span><br><span class="line">----------js runtime----------</span><br><span class="line">           ||    /\</span><br><span class="line">           \/    ||</span><br><span class="line">------Android/IOS render------</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<h1 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h1><ul>
-<li><p><strong>React Native更新太快</strong> 通常我们说软件更新快是一件好事情，但是对于咱们开发React Native来说的话确实有点….(学不动.png)，更新太快会有一些库的兼容问题，因此很可能半年之前写的项目不能很好的运行在最新的React Native的版本之上。（相信React Native后面能够稳定下来）</p>
-</li>
-<li><p><strong>第三方库的质量问题</strong> 本着不重复造轮子的原则，我们一般都会或多或少的引入第三方库。对于React Native来说的话确实优秀的第三方库太少了，一般很难满足自己的需求，因此只能读其代码进行定制化的改造。这一点也确实是由于精通Android 和ios以及Rn的开发者比较少，很少能够进行全面的编写完美的跨平台组件。（基于稳定下来之后，我想这个问题也能够得到充分的解决）</p>
-</li>
-<li><p><strong>React Native稀奇古怪的问题还是不少</strong> 这一点上主要在于刚刚接触React Native的时候对于语法以及开发项目的不理解时导致的问题挺多的。（没办法只能说坑踩的多了，你就是大佬了）</p>
-</li>
-<li><p><strong>成也js败也js</strong> 这一点只能代表我个人观点，js的动态能力很强，在代码的编写上可以说是每一个人都有心中自己的最佳实践。（当然了客观上我们还是需要多学习像airbnb等这些大公司编写的优秀的代码）在js中，当我们要调用别人的库的时候我们只能够进行查找文档或者找到对应的博客进行学习。对于我这种从java转过来的编程者更倾向于希望阅读代码的api注释以及传入参数的限制等等，这样的话对于开发效率的提升也是不小的，而且可以更快的上手。（不过对于js这种动态类型来说，TypeScript（它不是一个库，应该说是js的另外一种生态了）、Flow这种可以帮助js进行类型检查的库或者生态能够更好的解决这个问题了）</p>
-</li>
-</ul></div><a href="/2018/08/19/ReactNative/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2018/04/29/okhttp源码解析/" class="post-title-link">okhttp源码解析</a></h2><div class="post-info">Apr 29, 2018</div><div class="post-content"><p><img src="https://i.imgur.com/pmIxXFe.png" alt=""></p>
-<p>安卓开发领域上<a href="https://github.com/square/okhttp" target="_blank" rel="noopener">Okhttp</a>、<a href="https://github.com/square/retrofit" target="_blank" rel="noopener">Retrofit</a>、<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">RxJava</a>无疑已经成为了开发过程中的三板斧。在安卓6.0中谷歌删除了HttpClient的相关代码，并且在系统层面上使用了OkHttp，因此足以说明了这个框架的优秀。</p>
-<p><a href="https://github.com/android-cn/android-open-project-analysis" target="_blank" rel="noopener">我们不重复造轮子不表示我们不需要知道轮子该怎么造及如何更好的造!</a> </p></div><a href="/2018/04/29/okhttp源码解析/" class="read-more">...阅读全文</a></article></li></ul></main><footer><div class="paginator"><a href="/page/2/" class="next">下一页</a></div><div class="copyright"><p>© 2015 - 2018 <a href="https://keep2iron.github.io">Keep2iron</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+</ul></div><a href="/2018/11/03/React-Native跨平台技术选型/" class="read-more">...more</a></article></li></ul></main><footer><div class="paginator"><a href="/page/2/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2018 <a href="https://keep2iron.github.io">Keep2iron</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

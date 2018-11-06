@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://keep2iron.github.io/"/>
-  <updated>2018-08-21T16:39:24.075Z</updated>
+  <updated>2018-11-06T03:05:46.131Z</updated>
   <id>https://keep2iron.github.io/</id>
   
   <author>
@@ -15,6 +15,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React-Native状态管理框架mobx实战</title>
+    <link href="https://keep2iron.github.io/2018/11/06/React-Native%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6mobx/"/>
+    <id>https://keep2iron.github.io/2018/11/06/React-Native状态管理框架mobx/</id>
+    <published>2018-11-06T03:00:34.000Z</published>
+    <updated>2018-11-06T03:05:46.131Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://cn.mobx.js.org/flow.png" width="680px"></p><blockquote><p>文章中的代码基于 ract-native 0.57.1编写</p></blockquote><p><a href="https://cn.mobx.js.org/" target="_blank" rel="noopener">MobX</a> 是一个经过战火洗礼的库，它通过透明的函数响应式编程(transparently applying functional reactive programming - TFRP)使得状态管理变得简单和可扩展。MobX背后的哲学很简单:</p><p><em>任何源自应用状态的东西都应该自动地获得。</em></p><p>上面提到了一个重要的关键点 <a href="https://zh.wikipedia.org/wiki/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B" target="_blank" rel="noopener"><em>响应式编程</em></a>。</p><h4>响应式编程</h4><ul><li><p>面向数据</p></li><li><p>计算模型会自动将变化的值通过数据流进行传播</p></li></ul><p>mobx充分体现了上面提到的这两点，那么接下来的问题是….</p><h4>如何上手mobx？</h4><a id="more"></a><h5 id="Observable-可观察的状态"><a href="#Observable-可观察的状态" class="headerlink" title="Observable(可观察的状态)"></a>Observable(可观察的状态)</h5><p>该类用于修饰类成员变量（实例）即可完成可观察的功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ES Next(装饰器)语法:</span><br><span class="line"></span><br><span class="line">import &#123; observable &#125; from &quot;mobx&quot;;</span><br><span class="line"></span><br><span class="line">class Todo &#123;</span><br><span class="line">    id = Math.random();</span><br><span class="line">    @observable title = &quot;&quot;;</span><br><span class="line">    @observable finished = false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ES5</span><br><span class="line">import &#123; decorate, observable &#125; from &quot;mobx&quot;;</span><br><span class="line"></span><br><span class="line">class Todo &#123;</span><br><span class="line">    id = Math.random();</span><br><span class="line">    title = &quot;&quot;;</span><br><span class="line">    finished = false;</span><br><span class="line">&#125;</span><br><span class="line">decorate(Todo, &#123;</span><br><span class="line">    title: observable,</span><br><span class="line">    finished: observable</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h5 id="Computed-values-计算值"><a href="#Computed-values-计算值" class="headerlink" title="Computed values(计算值)"></a>Computed values(计算值)</h5><p>刚开始接触mobx的时候我并没有认为这个计算有什么意义，不过随着接触的深入发现这个概念也是一个极其重要的概念。<br>例如需求如下：购物车中有一个显示购物车数量的按钮，通过前面的装饰器我们很容易编写出表示购物车列表的state数据</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@observable shoppingCart = [];</span><br></pre></td></tr></table></figure><p>那么我们还需要知道购物车的数量，你可能会说通过shoppingCart.length获取。但是list是会实时改变的，那么如何不做到利用另外一个变量的情况下获取购物车的数量呢？请看如下代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@computed</span><br><span class="line">getShoppingCartCount()&#123;</span><br><span class="line">return this.shoppingCart.length; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>当添加了一个shoppingCart或者其属性发生变化时，MobX 会确保 shoppingCart 自动更新。 像这样的计算可以类似于 MS Excel 这样电子表格程序中的公式。每当只有在需要它们的时候，它们才会自动更新。</p><h5 id="observer（观察者）、Action"><a href="#observer（观察者）、Action" class="headerlink" title="observer（观察者）、Action"></a>observer（观察者）、Action</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">// ShoppingCartStore.js</span><br><span class="line">export default class ShoppingCartStore &#123;</span><br><span class="line">    // 购物车列表</span><br><span class="line">    @observable</span><br><span class="line">    _shoppingCartList: Array&lt;ShoppingCartProduct&gt; = [];</span><br><span class="line"></span><br><span class="line">    @computed</span><br><span class="line">    get shoppingCartCount() &#123;</span><br><span class="line">        return this.shoppingCartList.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @action</span><br><span class="line">    async loadShoppingCarts() &#123;</span><br><span class="line">        const resp = await this.respitory.loadShoppingCart();</span><br><span class="line">        if (resp) &#123;</span><br><span class="line">            runInAction(() =&gt; &#123;</span><br><span class="line">                this._shoppingCartList = resp.list;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ShoppingCartPage.js</span><br><span class="line">@observer</span><br><span class="line">export default class ShoppingCartPage extends Component&lt;Props, State&gt; &#123;</span><br><span class="line"></span><br><span class="line">componentDidMount()&#123;</span><br><span class="line">const &#123; shoppingCartStore &#125; = this.props;</span><br><span class="line"> </span><br><span class="line">shoppingCartStore.loadShoppingCarts().catch(() =&gt; &#123;&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render()&#123;</span><br><span class="line">return (</span><br><span class="line">&lt;FlatList</span><br><span class="line">...//此处省略若干代码</span><br><span class="line">                data=&#123;this.store.shoppingCartList&#125;</span><br><span class="line">            /&gt;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上面的代码算是一个完整的购物车列表显示流程<br>1.由componentDidiMount触发store加载函数loadShoppingCarts,通过<em>this.respitory.loadShoppingCart</em>获取返回的数据，随后执行this._shoppingCartList = resp.list;那么为什么要写runInAction呢？<br>因为针对所有@observable的赋值操作必须在@action注解的函数或者在runInAction中执行。</p><blockquote><p>状态(这里就是_shoppingCartList)应该以某种方式来更新。<br>当状态更新后，MobX 会以一种高效且无障碍的方式处理好剩下的事情。像上面如此简单的语句，已经足够用来自动更新用户界面了。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cn.mobx.js.org/flow.png&quot; width=&quot;680px&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;文章中的代码基于 ract-native 0.57.1编写&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://cn.mobx.js.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MobX&lt;/a&gt; 是一个经过战火洗礼的库，它通过透明的函数响应式编程(transparently applying functional reactive programming - TFRP)使得状态管理变得简单和可扩展。MobX背后的哲学很简单:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;任何源自应用状态的东西都应该自动地获得。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;上面提到了一个重要的关键点 &lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;em&gt;响应式编程&lt;/em&gt;&lt;/a&gt;。&lt;/p&gt;
+&lt;h4&gt;响应式编程&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;面向数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;计算模型会自动将变化的值通过数据流进行传播&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mobx充分体现了上面提到的这两点，那么接下来的问题是….&lt;/p&gt;
+&lt;h4&gt;如何上手mobx？&lt;/h4&gt;
+    
+    </summary>
+    
+    
+      <category term="react native" scheme="https://keep2iron.github.io/tags/react-native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-Native原理的简单讨论</title>
+    <link href="https://keep2iron.github.io/2018/11/04/React-Native%E7%AE%80%E5%8D%95%E5%8E%9F%E7%90%86%E8%AE%A8%E8%AE%BA/"/>
+    <id>https://keep2iron.github.io/2018/11/04/React-Native简单原理讨论/</id>
+    <published>2018-11-04T01:46:34.000Z</published>
+    <updated>2018-11-06T03:05:29.861Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>文章中的代码基于 ract-native 0.57.1进行编写</p></blockquote><p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p><h4>Android</h4><ul><li><p>interface ReactApplication<br>该类用于获取一个默认的ReactHost实例对象</p></li><li><p>class ReactHost<br>包含ReactInstanceManager对象的一个简单的类</p></li><li><p><strong>class ReactInstanceManager</strong><br>该类用于管理CatalystInstance实力对象，配合ReactRootView管理View的创建与生命周期等功能。</p></li><li><p><strong>class ReactRootView</strong><br>ReactRootView是Catalyst的主视图，提供侦听大小更改的功能，以便UI管理器可以重新布局其元素。它委托处理自身和子视图的触摸事件，并使用JSTouchDispatcher将这些事件发送给JS。</p></li><li><p><strong>class CatalystInstance</strong><br>用于js与原生之间的通信管理类</p></li><li><p><strong>JavaScriptModule/NativeModule</strong><br>JavaScriptModule是JS Module，负责JS到Java的映射调用格式声明，由CatalystInstance统一管理。<br>NativeModule是ava Module，负责Java到Js的映射调用格式声明，由CatalystInstance统一管理。<br>AppRegistry、DeviceEventEmitter通过继承JavaScriptModule，然后声明相关方法即可调用。例如通过reactContext.getJSModule AppRegistry.class 方法获取AppRegistry对象即可调用js端暴露的方法。通过继承NativeModule然后编写方法并添加<strong>@ReactMethod</strong>注解即从native端暴露给js端调用。</p><a id="more"></a></li></ul><p></p><h4>React-Native是如何将一个jsx元素映射为一个原生控件的？</h4><br>1.加载<img src="https://i.imgur.com/j3ei8P8.png" width="680px"><br>2.渲染<img src="https://i.imgur.com/hlhPWSA.png" width="680px"><p></p><p></p><h4>渲染原理</h4><p></p><blockquote><p>编写jsx通过babel转换成标准js代码，通过createElement创建element</p></blockquote><blockquote><p>UIManager.js通过cpp端传递事件给Native端（Android/Ios）,利用了UIManagerModule.java中的createView、updateView、manageChildren等方法进行界面中元素的修改</p></blockquote><blockquote><p>UIManagerModule负责从js传递来的修改element元素的这些操作封装成事件，并添加到队列中，最终完成渲染</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;文章中的代码基于 ract-native 0.57.1进行编写&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/wdMolXp.png&quot; width=&quot;680px&quot;&gt;&lt;/p&gt;
+&lt;h4&gt;Android&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;interface ReactApplication&lt;br&gt;该类用于获取一个默认的ReactHost实例对象&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;class ReactHost&lt;br&gt;包含ReactInstanceManager对象的一个简单的类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;class ReactInstanceManager&lt;/strong&gt;&lt;br&gt;该类用于管理CatalystInstance实力对象，配合ReactRootView管理View的创建与生命周期等功能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;class ReactRootView&lt;/strong&gt;&lt;br&gt;ReactRootView是Catalyst的主视图，提供侦听大小更改的功能，以便UI管理器可以重新布局其元素。它委托处理自身和子视图的触摸事件，并使用JSTouchDispatcher将这些事件发送给JS。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;class CatalystInstance&lt;/strong&gt;&lt;br&gt;用于js与原生之间的通信管理类&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;JavaScriptModule/NativeModule&lt;/strong&gt;&lt;br&gt;JavaScriptModule是JS Module，负责JS到Java的映射调用格式声明，由CatalystInstance统一管理。&lt;br&gt;NativeModule是ava Module，负责Java到Js的映射调用格式声明，由CatalystInstance统一管理。&lt;br&gt;AppRegistry、DeviceEventEmitter通过继承JavaScriptModule，然后声明相关方法即可调用。例如通过reactContext.getJSModule AppRegistry.class 方法获取AppRegistry对象即可调用js端暴露的方法。通过继承NativeModule然后编写方法并添加&lt;strong&gt;@ReactMethod&lt;/strong&gt;注解即从native端暴露给js端调用。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="react native" scheme="https://keep2iron.github.io/tags/react-native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-Native跨平台技术选型</title>
+    <link href="https://keep2iron.github.io/2018/11/03/React-Native%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/"/>
+    <id>https://keep2iron.github.io/2018/11/03/React-Native跨平台技术选型/</id>
+    <published>2018-11-03T07:46:34.000Z</published>
+    <updated>2018-11-06T03:07:02.818Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p><h1 id="跨平台技术选型"><a href="#跨平台技术选型" class="headerlink" title="跨平台技术选型"></a>跨平台技术选型</h1><h4>React-Native的优势</h4><ul><li><p><strong>某些方面上开发效率高</strong> 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。</p></li><li><p><strong>复杂的布局也能得心应手。</strong> Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行<strong>自定义View</strong>，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。</p></li><li><p><strong>开发效率快。</strong> 由于js是弱类型语言，在ReactNative中使用了基于es6的语法，因此可以大大提高了js面向对象的编程的能力。而且语法糖丰富，第三方扩展多，使用npm基本上什么库都能够找到你想要的第三方库</p></li><li><p><strong>learn once write everywhere!!</strong> 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。</p></li><li><p><strong>跨平台</strong> 这一点恐怕是选择React Native的一个非常重要的原因。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--------------js--------------</span><br><span class="line">              ||</span><br><span class="line">              \/</span><br><span class="line">----------js runtime----------</span><br><span class="line">           ||    /\</span><br><span class="line">           \/    ||</span><br><span class="line">------Android/IOS render------</span><br></pre></td></tr></table></figure></li></ul><a id="more"></a><h4>React-Native不足</h4><ul><li><p><strong>React Native更新太快</strong> 通常我们说软件更新快是一件好事情，但是对于咱们开发React Native来说的话确实有点….(学不动.png)，更新太快会有一些库的兼容问题，因此很可能半年之前写的项目不能很好的运行在最新的React Native的版本之上。（相信React Native后面能够稳定下来）</p></li><li><p><strong>第三方库的质量问题</strong> 本着不重复造轮子的原则，我们一般都会或多或少的引入第三方库。对于React Native来说的话确实优秀的第三方库太少了，一般很难满足自己的需求，因此只能读其代码进行定制化的改造。这一点也确实是由于精通Android 和ios以及Rn的开发者比较少，很少能够进行全面的编写完美的跨平台组件。（基于稳定下来之后，我想这个问题也能够得到充分的解决）</p></li><li><p><strong>React Native稀奇古怪的问题还是不少</strong> 这一点上主要在于刚刚接触React Native的时候对于语法以及开发项目的不理解时导致的问题挺多的。（没办法只能说坑踩的多了，你就是大佬了）</p></li><li><p><strong>成也js败也js</strong> 这一点只能代表我个人观点，js的动态能力很强，在代码的编写上可以说是每一个人都有心中自己的最佳实践。（当然了客观上我们还是需要多学习像airbnb等这些大公司编写的优秀的代码）在js中，当我们要调用别人的库的时候我们只能够进行查找文档或者找到对应的博客进行学习。对于我这种从java转过来的编程者更倾向于希望阅读代码的api注释以及传入参数的限制等等，这样的话对于开发效率的提升也是不小的，而且可以更快的上手。（不过对于js这种动态类型来说，TypeScript（它不是一个库，应该说是js的另外一种生态了）、Flow这种可以帮助js进行类型检查的库或者生态能够更好的解决这个问题了）</p></li></ul><h4>Weex OR Flutter</h4><ul><li><p>Weex是阿里巴巴基于React-Native的灵感从而产生的项目,Weex利用了v8来作为js runtime并且使用vue作为开发框架，这对于vue的使用者来说是一个很好的消息。</p></li><li><p>Flutter是Google推出的一个跨平台框架，使用Skia作为绘制引擎。由于IOS并无内置该代码，因此IOS安装体积会比安卓大。与RN和Weex不同，Flutter并不是通过解析js代码转换Native代码渲染而是相当于使用了一个Canvas使用Skia进行绘制，由于RN目前已知的一些问题我认为Flutter可能是未来跨平台的一种重要的解决方案。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/wdMolXp.png&quot; width=&quot;680px&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;跨平台技术选型&quot;&gt;&lt;a href=&quot;#跨平台技术选型&quot; class=&quot;headerlink&quot; title=&quot;跨平台技术选型&quot;&gt;&lt;/a&gt;跨平台技术选型&lt;/h1&gt;&lt;h4&gt;React-Native的优势&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;某些方面上开发效率高&lt;/strong&gt; 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;复杂的布局也能得心应手。&lt;/strong&gt; Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行&lt;strong&gt;自定义View&lt;/strong&gt;，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;开发效率快。&lt;/strong&gt; 由于js是弱类型语言，在ReactNative中使用了基于es6的语法，因此可以大大提高了js面向对象的编程的能力。而且语法糖丰富，第三方扩展多，使用npm基本上什么库都能够找到你想要的第三方库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;learn once write everywhere!!&lt;/strong&gt; 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;跨平台&lt;/strong&gt; 这一点恐怕是选择React Native的一个非常重要的原因。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--------------js--------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              ||&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              \/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;----------js runtime----------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           ||    /\&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           \/    ||&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;------Android/IOS render------&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="react native" scheme="https://keep2iron.github.io/tags/react-native/"/>
+    
+  </entry>
   
   <entry>
     <title>大话自定义view(1)</title>
@@ -41,44 +149,18 @@
   </entry>
   
   <entry>
-    <title>React Native vs Native</title>
-    <link href="https://keep2iron.github.io/2018/08/19/ReactNative/"/>
-    <id>https://keep2iron.github.io/2018/08/19/ReactNative/</id>
+    <title>React-Native通信实现原理</title>
+    <link href="https://keep2iron.github.io/2018/08/19/ReactNative%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <id>https://keep2iron.github.io/2018/08/19/ReactNative通信实现原理/</id>
     <published>2018-08-19T07:46:34.000Z</published>
-    <updated>2018-08-21T16:41:51.700Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p><h1 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h1><ul><li><p><strong>某些方面上开发效率高</strong> 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。</p></li><li><p><strong>复杂的布局也能得心应手。</strong> Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行<strong>自定义View</strong>，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。</p></li><li><p><strong>开发效率快。</strong> 由于js是弱类型语言，在ReactNative中使用了基于es6的语法，因此可以大大提高了js面向对象的编程的能力。而且语法糖丰富，第三方扩展多，使用npm基本上什么库都能够找到你想要的第三方库</p></li><li><p><strong>learn once write everywhere!!</strong> 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。</p></li><li><p><strong>跨平台</strong> 这一点恐怕是选择React Native的一个非常重要的原因。</p></li></ul><h1 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h1><ul><li><p><strong>React Native更新太快</strong> 通常我们说软件更新快是一件好事情，但是对于咱们开发React Native来说的话确实有点….(学不动.png)，更新太快会有一些库的兼容问题，因此很可能半年之前写的项目不能很好的运行在最新的React Native的版本之上。（相信React Native后面能够稳定下来）</p></li><li><p><strong>第三方库的质量问题</strong> 本着不重复造轮子的原则，我们一般都会或多或少的引入第三方库。对于React Native来说的话确实优秀的第三方库太少了，一般很难满足自己的需求，因此只能读其代码进行定制化的改造。这一点也确实是由于精通Android 和ios以及Rn的开发者比较少，很少能够进行全面的编写完美的跨平台组件。（基于稳定下来之后，我想这个问题也能够得到充分的解决）</p></li><li><p><strong>React Native稀奇古怪的问题还是不少</strong> 这一点上主要在于刚刚接触React Native的时候对于语法以及开发项目的不理解时导致的问题挺多的。（没办法只能说坑踩的多了，你就是大佬了）</p></li><li><p><strong>成也js败也js</strong> 这一点只能代表我个人观点，js的动态能力很强，在代码的编写上可以说是每一个人都有心中自己的最佳实践。（当然了客观上我们还是需要多学习像airbnb等这些大公司编写的优秀的代码）在js中，当我们要调用别人的库的时候我们只能够进行查找文档或者找到对应的博客进行学习。对于我这种从java转过来的编程者更倾向于希望阅读代码的api注释以及传入参数的限制等等，这样的话对于开发效率的提升也是不小的，而且可以更快的上手。（不过对于js这种动态类型来说，TypeScript（它不是一个库，应该说是js的另外一种生态了）、Flow这种可以帮助js进行类型检查的库或者生态能够更好的解决这个问题了）</p></li></ul><a id="more"></a><h5>原有Android项目集成ReactNative</h5><p>自定义跳转规则</p>]]></content>
+    <updated>2018-11-05T02:44:14.255Z</updated>
     
     <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/wdMolXp.png&quot; width=&quot;680px&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;优势&quot;&gt;&lt;a href=&quot;#优势&quot; class=&quot;headerlink&quot; title=&quot;优势&quot;&gt;&lt;/a&gt;优势&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;某些方面上开发效率高&lt;/strong&gt; 在某些方面React Native开发效率比原生效率高，这里指的是开发效率，因为HotReload的关系，因此在开发React Native的时候基本上不用重新编译整个工程，这一点我认为对开发者的开发体验来说是非常棒的，在这里我指的是某些方面，当然什么方面来说的话后面会详细的进行展开。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;复杂的布局也能得心应手。&lt;/strong&gt; Flex布局针对于复杂页面的布局很有优势，由于之前是做安卓开发，比如安卓在开发流式布局或者自定义多样化的布局上需要进行&lt;strong&gt;自定义View&lt;/strong&gt;，如果考虑性能可能还需要进行使用RecyclerView进行多布局。因此结合css position属性 + flex可以轻松应对大多数场景了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;开发效率快。&lt;/strong&gt; 由于js是弱类型语言，在ReactNative中使用了基于es6的语法，因此可以大大提高了js面向对象的编程的能力。而且语法糖丰富，第三方扩展多，使用npm基本上什么库都能够找到你想要的第三方库&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;learn once write everywhere!!&lt;/strong&gt; 这里的优势确实还是有的，由于之前确实学习过一段时间的React，对于React的这套体系(更改State驱动界面更新，Props可以用来跨组件传值等等)这些在React编程的思路确实是没有变化的，因此前端对于转来学习React Native应该是问题不大的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;跨平台&lt;/strong&gt; 这一点恐怕是选择React Native的一个非常重要的原因。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;不足&quot;&gt;&lt;a href=&quot;#不足&quot; class=&quot;headerlink&quot; title=&quot;不足&quot;&gt;&lt;/a&gt;不足&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;React Native更新太快&lt;/strong&gt; 通常我们说软件更新快是一件好事情，但是对于咱们开发React Native来说的话确实有点….(学不动.png)，更新太快会有一些库的兼容问题，因此很可能半年之前写的项目不能很好的运行在最新的React Native的版本之上。（相信React Native后面能够稳定下来）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;第三方库的质量问题&lt;/strong&gt; 本着不重复造轮子的原则，我们一般都会或多或少的引入第三方库。对于React Native来说的话确实优秀的第三方库太少了，一般很难满足自己的需求，因此只能读其代码进行定制化的改造。这一点也确实是由于精通Android 和ios以及Rn的开发者比较少，很少能够进行全面的编写完美的跨平台组件。（基于稳定下来之后，我想这个问题也能够得到充分的解决）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;React Native稀奇古怪的问题还是不少&lt;/strong&gt; 这一点上主要在于刚刚接触React Native的时候对于语法以及开发项目的不理解时导致的问题挺多的。（没办法只能说坑踩的多了，你就是大佬了）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;成也js败也js&lt;/strong&gt; 这一点只能代表我个人观点，js的动态能力很强，在代码的编写上可以说是每一个人都有心中自己的最佳实践。（当然了客观上我们还是需要多学习像airbnb等这些大公司编写的优秀的代码）在js中，当我们要调用别人的库的时候我们只能够进行查找文档或者找到对应的博客进行学习。对于我这种从java转过来的编程者更倾向于希望阅读代码的api注释以及传入参数的限制等等，这样的话对于开发效率的提升也是不小的，而且可以更快的上手。（不过对于js这种动态类型来说，TypeScript（它不是一个库，应该说是js的另外一种生态了）、Flow这种可以帮助js进行类型检查的库或者生态能够更好的解决这个问题了）&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
     
-      <category term="Simple Record" scheme="https://keep2iron.github.io/tags/Simple-Record/"/>
+      <category term="react native" scheme="https://keep2iron.github.io/tags/react-native/"/>
     
   </entry>
   

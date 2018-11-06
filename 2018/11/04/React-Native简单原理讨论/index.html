@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> React-Native原理的简单讨论 · Keep2iron's Road to development</title><meta name="description" content="React-Native原理的简单讨论"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://keep2iron.github.io/atom.xml" title="Keep2iron's Road to development"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/Keep2iron" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/keep2iron" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">React-Native原理的简单讨论</h1><div class="post-info">Nov 4, 2018</div><div class="post-content"><blockquote>
+<p>文章中的代码基于 ract-native 0.57.1进行编写</p>
+</blockquote>
+<p><img src="https://i.imgur.com/wdMolXp.png" width="680px"></p>
+<h4>Android</h4>
+
+<ul>
+<li><p>interface ReactApplication<br>该类用于获取一个默认的ReactHost实例对象</p>
+</li>
+<li><p>class ReactHost<br>包含ReactInstanceManager对象的一个简单的类</p>
+</li>
+<li><p><strong>class ReactInstanceManager</strong><br>该类用于管理CatalystInstance实力对象，配合ReactRootView管理View的创建与生命周期等功能。</p>
+</li>
+<li><p><strong>class ReactRootView</strong><br>ReactRootView是Catalyst的主视图，提供侦听大小更改的功能，以便UI管理器可以重新布局其元素。它委托处理自身和子视图的触摸事件，并使用JSTouchDispatcher将这些事件发送给JS。</p>
+</li>
+<li><p><strong>class CatalystInstance</strong><br>用于js与原生之间的通信管理类</p>
+</li>
+<li><p><strong>JavaScriptModule/NativeModule</strong><br>JavaScriptModule是JS Module，负责JS到Java的映射调用格式声明，由CatalystInstance统一管理。<br>NativeModule是ava Module，负责Java到Js的映射调用格式声明，由CatalystInstance统一管理。<br>AppRegistry、DeviceEventEmitter通过继承JavaScriptModule，然后声明相关方法即可调用。例如通过reactContext.getJSModule AppRegistry.class 方法获取AppRegistry对象即可调用js端暴露的方法。通过继承NativeModule然后编写方法并添加<strong>@ReactMethod</strong>注解即从native端暴露给js端调用。</p>
+<a id="more"></a>
+</li>
+</ul>
+<p></p><h4>React-Native是如何将一个jsx元素映射为一个原生控件的？</h4><br>1.加载<img src="https://i.imgur.com/j3ei8P8.png" width="680px"><br>2.渲染<img src="https://i.imgur.com/hlhPWSA.png" width="680px"><p></p>
+<p></p><h4>渲染原理</h4><p></p>
+<blockquote>
+<p>编写jsx通过babel转换成标准js代码，通过createElement创建element</p>
+</blockquote>
+<blockquote>
+<p>UIManager.js通过cpp端传递事件给Native端（Android/Ios）,利用了UIManagerModule.java中的createView、updateView、manageChildren等方法进行界面中元素的修改</p>
+</blockquote>
+<blockquote>
+<p>UIManagerModule负责从js传递来的修改element元素的这些操作封装成事件，并添加到队列中，最终完成渲染</p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/11/06/React-Native状态管理框架mobx/" class="prev">PREV</a><a href="/2018/11/03/React-Native跨平台技术选型/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'keep2iron';
+var disqus_identifier = '2018/11/04/React-Native简单原理讨论/';
+var disqus_title = 'React-Native原理的简单讨论';
+var disqus_url = 'https://keep2iron.github.io/2018/11/04/React-Native简单原理讨论/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//keep2iron.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2018 <a href="https://keep2iron.github.io">Keep2iron</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
