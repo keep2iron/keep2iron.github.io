@@ -1,11 +1,11 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 记录AndroidProcess调试 · Keep2iron's Road to development</title><meta name="description" content="记录AndroidProcess调试 - Keep2iron"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://keep2iron.github.io/atom.xml" title="Keep2iron's Road to development"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/Keep2iron" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/keep2iron" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">记录AndroidProcess调试</h1><div class="post-info">May 26, 2017</div><div class="post-content"><p>记录AndroidProcess调试步骤</p>
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 记录AndroidProcess调试 · Keep2iron's Road to development</title><meta name="description" content="记录AndroidProcess调试 - Keep2iron"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://keep2iron.github.io/atom.xml" title="Keep2iron's Road to development"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/Keep2iron" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/keep2iron" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">记录AndroidProcess调试</h1><div class="post-info">May 26, 2017</div><div class="post-content"><p>记录AndroidProcess调试步骤</p>
 <p><strong>第一步</strong>在AnnoProcessor中设置断点</p>
-<p><img src="http://i.imgur.com/gWBxFFT.png" alt=""></p>
+<p><img src="http://i.imgur.com/gWBxFFT.png" alt></p>
 <a id="more"></a>
 <blockquote>
 <p>记录AndroidProcess调试步骤</p>
 <p><strong>第一步</strong>在AnnoProcessor中设置断点</p>
-<p><img src="http://i.imgur.com/gWBxFFT.png" alt=""></p>
+<p><img src="http://i.imgur.com/gWBxFFT.png" alt></p>
 <p><strong>第二步</strong>修改</p>
 <p>gradle.properties</p>
 <p><strong>第三步</strong>添加如下代码</p>
@@ -16,24 +16,24 @@
 <p><strong>第四步</strong>在上一步的基础上在as控制台运行如下命令：</p>
 <p><code>gradle --daemon</code></p>
 <p>你可能会有如下的报错：</p>
-<p><img src="http://i.imgur.com/gMRzcuZ.png" alt=""></p>
+<p><img src="http://i.imgur.com/gMRzcuZ.png" alt></p>
 <p><strong>少年莫慌，这是因为gradle没有在你的电脑中配置的缘故，因此可以将gradle改成gradlew！！！！！</strong></p>
 <p>gradlew相当于是gradle的一个包装，相当于接口，因此实现类是由，.gradle文件夹中的gradle-wrapper.properties中的distributionUrl后面指定的gradle版本决定的<strong>（PS:在这里可以看到面向接口的好处了吧）</strong></p>
 <p>运行完成之后，gradle就已经开启了守护进程，他会监听在我们刚刚配置的指定的端口号上</p>
 <p><strong>第五步</strong>配置AndroidStudio</p>
-<p><img src="http://i.imgur.com/lmCs3Wd.png" alt=""></p>
-<p><img src="http://i.imgur.com/B1tGwYV.png" alt=""></p>
-<p><img src="http://i.imgur.com/y0vgumU.png" alt=""></p>
+<p><img src="http://i.imgur.com/lmCs3Wd.png" alt></p>
+<p><img src="http://i.imgur.com/B1tGwYV.png" alt></p>
+<p><img src="http://i.imgur.com/y0vgumU.png" alt></p>
 <p><strong>然后点击ok就可以了</strong>然后界面上就有这个配置项了，下面开始运行它，点击那个小虫子的图标，debug模式运行</p>
-<p><img src="http://i.imgur.com/RQNGkba.png" alt=""></p>
-<p><img src="http://i.imgur.com/hmokmXh.png" alt=""></p>
+<p><img src="http://i.imgur.com/RQNGkba.png" alt></p>
+<p><img src="http://i.imgur.com/hmokmXh.png" alt></p>
 <p><strong>第五步</strong>最后一步啦，在命令行执行如下命令，让其进行编译，因此我们</p>
 <p><code>gradle clean assembleDebug</code></p>
 <p>在运行的过程中</p>
-<p><img src="http://i.imgur.com/jivxUeh.png" alt=""></p>
+<p><img src="http://i.imgur.com/jivxUeh.png" alt></p>
 <p>这里可以看到我们的断点执行啦！！ok到此AnnotationProcessor的调试就到此结束了~！</p>
 </blockquote>
-</div></article></div></main><footer><div class="paginator"><a href="/2017/05/28/编写一个编译时注入框架/" class="prev">上一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'keep2iron';
+</div></article></div></main><footer><div class="paginator"><a href="/2017/05/28/编写一个编译时注入框架/" class="prev">PREV</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'keep2iron';
 var disqus_identifier = '2017/05/26/记录AndroidProcess调试/';
 var disqus_title = '记录AndroidProcess调试';
 var disqus_url = 'https://keep2iron.github.io/2017/05/26/记录AndroidProcess调试/';

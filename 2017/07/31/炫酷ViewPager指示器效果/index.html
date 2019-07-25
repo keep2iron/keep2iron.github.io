@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 炫酷ViewPager指示器效果 · Keep2iron's Road to development</title><meta name="description" content="自定义控件"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://keep2iron.github.io/atom.xml" title="Keep2iron's Road to development"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/Keep2iron" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/keep2iron" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">炫酷ViewPager指示器效果</h1><div class="post-info">Jul 31, 2017</div><div class="post-content"><p><img src="http://i.imgur.com/FRwSDei.gif" alt=""></p>
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 炫酷ViewPager指示器效果 · Keep2iron's Road to development</title><meta name="description" content="自定义控件"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://keep2iron.github.io/atom.xml" title="Keep2iron's Road to development"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/Keep2iron" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/keep2iron" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">炫酷ViewPager指示器效果</h1><div class="post-info">Jul 31, 2017</div><div class="post-content"><p><img src="http://i.imgur.com/FRwSDei.gif" alt></p>
 <h1 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h1><p>本文的源起是在有一天在网上看到的一个挺不错的一个效果而产生的一个想法，正好因为这段时间公司闲了下来，因此想着练习一下中定义view。</p>
 <a id="more"></a>
 <h5 id="本文以尽可能通俗的语言，让大家理解整个的绘制过程，尽量不粘贴代码-因为我认为思路往往比代码更重要-。还有就是可能对数学无感的人和不太友好。"><a href="#本文以尽可能通俗的语言，让大家理解整个的绘制过程，尽量不粘贴代码-因为我认为思路往往比代码更重要-。还有就是可能对数学无感的人和不太友好。" class="headerlink" title="本文以尽可能通俗的语言，让大家理解整个的绘制过程，尽量不粘贴代码(因为我认为思路往往比代码更重要)。还有就是可能对数学无感的人和不太友好。"></a>本文以尽可能通俗的语言，让大家理解整个的绘制过程，尽量不粘贴代码(因为我认为思路往往比代码更重要)。还有就是可能对数学无感的人和不太友好。</h5><h2 id="一、这篇文章你将会学到什么"><a href="#一、这篇文章你将会学到什么" class="headerlink" title="一、这篇文章你将会学到什么?"></a>一、这篇文章你将会学到什么?</h2><blockquote>
@@ -6,8 +6,8 @@
 <p>2.学习Bezier的一些相关知识。</p>
 <p>3.利用面向对象更好的去解决一些复杂的问题。</p>
 </blockquote>
-<h2 id="二、准备"><a href="#二、准备" class="headerlink" title="二、准备"></a>二、准备</h2><h3 id="2-1-UI效果展示"><a href="#2-1-UI效果展示" class="headerlink" title="2.1 UI效果展示"></a>2.1 UI效果展示</h3><h3 id="原始效果图"><a href="#原始效果图" class="headerlink" title="原始效果图:"></a>原始效果图:</h3><p><img src="http://i.imgur.com/ybV4NBB.gif" alt=""></p>
-<h3 id="实际运行图"><a href="#实际运行图" class="headerlink" title="实际运行图:"></a>实际运行图:</h3><p><img src="http://i.imgur.com/FRwSDei.gif" alt=""></p>
+<h2 id="二、准备"><a href="#二、准备" class="headerlink" title="二、准备"></a>二、准备</h2><h3 id="2-1-UI效果展示"><a href="#2-1-UI效果展示" class="headerlink" title="2.1 UI效果展示"></a>2.1 UI效果展示</h3><h3 id="原始效果图"><a href="#原始效果图" class="headerlink" title="原始效果图:"></a>原始效果图:</h3><p><img src="http://i.imgur.com/ybV4NBB.gif" alt></p>
+<h3 id="实际运行图"><a href="#实际运行图" class="headerlink" title="实际运行图:"></a>实际运行图:</h3><p><img src="http://i.imgur.com/FRwSDei.gif" alt></p>
 <h3 id="2-2-思考"><a href="#2-2-思考" class="headerlink" title="2.2 思考"></a>2.2 思考</h3><blockquote>
 <p>1.界面由 ViewPager + 自定义指示器</p>
 <p>2.ViewPager的间隔效果.</p>
@@ -15,23 +15,23 @@
 </blockquote>
 <h3 id="2-3-ViewPager效果实现"><a href="#2-3-ViewPager效果实现" class="headerlink" title="2.3 ViewPager效果实现"></a>2.3 ViewPager效果实现</h3><p>我们看到上面的是一个可以滑动的ViewPager，但是默认的ViewPager是一页只能显示一个Item的，因此经过多方查找，我找到了如下方法可以实现这个效果:</p>
 <h5 id="2-3-1-ViewPager的布局"><a href="#2-3-1-ViewPager的布局" class="headerlink" title="2.3.1 ViewPager的布局"></a>2.3.1 ViewPager的布局</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_above</span>=<span class="string">"@+id/bezierIndicator"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:id</span>=<span class="string">"@+id/viewPager"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_centerVertical</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_gravity</span>=<span class="string">"bottom"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:clipToPadding</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:overScrollMode</span>=<span class="string">"never"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:paddingBottom</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:paddingEnd</span>=<span class="string">"@dimen/card_padding"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:paddingLeft</span>=<span class="string">"@dimen/card_padding"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:paddingRight</span>=<span class="string">"@dimen/card_padding"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:paddingStart</span>=<span class="string">"@dimen/card_padding"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<h5 id="android-clipToPadding-”false”"><a href="#android-clipToPadding-”false”" class="headerlink" title="android:clipToPadding=”false”"></a>android:clipToPadding=”false”</h5><p>就是说控件的绘制区域是否在padding里面的，true的情况下绘制的区域不包括了Padding占据的那部分<br><img src="http://i.imgur.com/uxdywV1.png" alt=""><br>蓝线的部分即为我们绘制的区域，因为设置了true，而且默认是true，而我们想要把绘制区域在padding中那么就要将这个属性设置为false了。</p>
-<h5 id="android-overScrollMode-”never”"><a href="#android-overScrollMode-”never”" class="headerlink" title="android:overScrollMode=”never”"></a>android:overScrollMode=”never”</h5><p>我们滑动的时候经常可以看到谷歌很多滑动的原生控件上都具有一个明显的特征(5.0以上)<br><img src="http://i.imgur.com/DewB1bC.png" alt=""></p>
+<h5 id="android-clipToPadding-”false”"><a href="#android-clipToPadding-”false”" class="headerlink" title="android:clipToPadding=”false”"></a>android:clipToPadding=”false”</h5><p>就是说控件的绘制区域是否在padding里面的，true的情况下绘制的区域不包括了Padding占据的那部分<br><img src="http://i.imgur.com/uxdywV1.png" alt><br>蓝线的部分即为我们绘制的区域，因为设置了true，而且默认是true，而我们想要把绘制区域在padding中那么就要将这个属性设置为false了。</p>
+<h5 id="android-overScrollMode-”never”"><a href="#android-overScrollMode-”never”" class="headerlink" title="android:overScrollMode=”never”"></a>android:overScrollMode=”never”</h5><p>我们滑动的时候经常可以看到谷歌很多滑动的原生控件上都具有一个明显的特征(5.0以上)<br><img src="http://i.imgur.com/DewB1bC.png" alt></p>
 <p>有一个阴影对吧，这个效果默认是有的，这个效果的含义就是滑动的时候可以滑出区域外，有一个简单的回弹效果，如果不想要这个阴影，也就是这个回弹，那么可以将这个属性设置成never即可。</p>
 <p>再来就是设置padding值。但是还有没结束。</p>
 <h5 id="2-3-2-ViewPager的代码设置"><a href="#2-3-2-ViewPager的代码设置" class="headerlink" title="2.3.2 ViewPager的代码设置"></a>2.3.2 ViewPager的代码设置</h5><pre><code>mViewPager = (ViewPager) findViewById(R.id.viewPager);
 mViewPager.setOffscreenPageLimit(3);
 mViewPager.setPageMargin(60);
 </code></pre><p>1.设置viewpager缓存页数，因为默认ViewPager只加载一页，因此这里设置成三个，让其全部加载。<br>2.设置setPageMargin是为了控制每一页Page之间的大小。产生一个间隔的效果。这里和padding的不同在于Padding是设置了边界，也就是第一页左边的那个大小，因此这里是设置每一页之间的大小的。</p>
-<p>经过了上面的配置，我们的ViewPager就可以完成了下面所示的效果<br><img src="http://i.imgur.com/TDZ8ZEf.png" alt=""></p>
+<p>经过了上面的配置，我们的ViewPager就可以完成了下面所示的效果<br><img src="http://i.imgur.com/TDZ8ZEf.png" alt></p>
 <h3 id="2-4-BezierIndicator"><a href="#2-4-BezierIndicator" class="headerlink" title="2.4 BezierIndicator"></a>2.4 BezierIndicator</h3><p>上面我们一步一步实现了ViewPager的效果，接下来的重头戏就是如何去实现小球？</p>
-<p>细心的我们可以发现这个球一共经历了5个状态，并且动画是<em>通过形状的变化加上画布的位移而产生</em>的<br><img src="http://i.imgur.com/rHwii48.png" alt=""><br><img src="http://i.imgur.com/987EBUH.gif" alt=""></p>
+<p>细心的我们可以发现这个球一共经历了5个状态，并且动画是<em>通过形状的变化加上画布的位移而产生</em>的<br><img src="http://i.imgur.com/rHwii48.png" alt><br><img src="http://i.imgur.com/987EBUH.gif" alt></p>
 <p>下面我们来一步一步来进行Beizer的绘制工作</p>
 <h4 id="2-4-1-预热一下"><a href="#2-4-1-预热一下" class="headerlink" title="2.4.1 预热一下"></a>2.4.1 预热一下</h4><p>在开始画之前我们先来看一下这个Beizer的相关api，关于Bezier的数学原理在这里不会详细阐述(网络上有大量的说明，如果有兴趣可以自行查阅)。</p>
 <p>在具体的讲解之前，我们来看看如果利用Bezier画圆。</p>
-<p>下面这个图利用了PS中的钢笔工具进行了绘制，也就是说这个圆是由4条Bezier曲线组成的。<br><img src="http://i.imgur.com/dMXbG4Q.png" alt=""></p>
+<p>下面这个图利用了PS中的钢笔工具进行了绘制，也就是说这个圆是由4条Bezier曲线组成的。<br><img src="http://i.imgur.com/dMXbG4Q.png" alt></p>
 <p>利用如下代码即可完成绘制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mPath.cubicTo(x1,y1,x2,y2,x3,y3);	//x1,x2都是控制点,x3是终点</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://i.imgur.com/i4jslVi.png" alt=""></p>
+<p><img src="http://i.imgur.com/i4jslVi.png" alt></p>
 <p>P1 P2 P3 P4分别是圆上的4个端点,它们连线的圆点即为该点的控制点。M为控制点到圆点的距离,那么M值的大小直接影响了曲线变化！</p>
 <p>代码如下:</p>
 <pre><code>mPath.reset();
@@ -61,7 +61,7 @@ rightY = y;
 <blockquote>
 <p><a href="http://spencermortensen.com/articles/bezier-circle/" target="_blank" rel="noopener">http://spencermortensen.com/articles/bezier-circle/</a>有一篇文章专门讲解了M点计算的原理。</p>
 </blockquote>
-<h2 id="三、开始"><a href="#三、开始" class="headerlink" title="三、开始"></a>三、开始</h2><h4 id="3-1来面向对象一下"><a href="#3-1来面向对象一下" class="headerlink" title="3.1来面向对象一下"></a>3.1来面向对象一下</h4><p><img src="http://i.imgur.com/JpN6uGa.png" alt=""></p>
+<h2 id="三、开始"><a href="#三、开始" class="headerlink" title="三、开始"></a>三、开始</h2><h4 id="3-1来面向对象一下"><a href="#3-1来面向对象一下" class="headerlink" title="3.1来面向对象一下"></a>3.1来面向对象一下</h4><p><img src="http://i.imgur.com/JpN6uGa.png" alt></p>
 <p>首先将小球进行了抽象，抽取成一个单独的类<em>BerizerCircle</em>，然后画出小球的时候需要一些控制点的坐标。在这里我们分为了水平端点(<em>HorizontalPoint</em>)和垂直端点坐标(<em>VerticalPoint</em>)。</p>
 <p>那么问题来了什么是水平端点和垂直端点呢？哈哈哈，其实这里我只是自己这么称呼的而已，不要介意。</p>
 <p>水平端点即为在水平方向上具有控制点的点，对应了我们刚才图上所示的P1,P3的两个端点，那么垂直端点也就是P2、P4了</p>
@@ -83,7 +83,7 @@ rightY = y;
 p2 = new VerticalPoint(R, 0, M);
 p3 = new HorizontalPoint(0, -R, M);
 p4 = new VerticalPoint(-R, 0, M);
-</code></pre><p>如果上述不是看的很懂那么再一个图来理解一下<br><img src="http://i.imgur.com/XgOAb5N.png" alt=""></p>
+</code></pre><p>如果上述不是看的很懂那么再一个图来理解一下<br><img src="http://i.imgur.com/XgOAb5N.png" alt></p>
 <p>那么利用R,M我们可以把图中所有的端点和控制点进行了计算。</p>
 <h4 id="3-2绘制流程"><a href="#3-2绘制流程" class="headerlink" title="3.2绘制流程"></a>3.2绘制流程</h4><p>下面我们来看一下<em>BezierCircle</em>下面这个核心的函数，思路就是通过滑动的百分比，来控制图形的形态。</p>
 <pre><code>/**
@@ -109,11 +109,11 @@ public void drawByPositionOffset(int fromPos, int toPos, float positionOffset) {
         buildCircle5(positionOffset, isTurnRight);
     }
 }
-</code></pre><p><img src="http://i.imgur.com/Q0YEXmf.png" alt=""></p>
+</code></pre><p><img src="http://i.imgur.com/Q0YEXmf.png" alt></p>
 <p>上图就是一个小球变化的一个趋势图，整体的一个绘制思路和流程在上图可以进行了完整的体现。</p>
 <p>那么下面我们来具体分析一下，小球在各个滑动区间中具体是如何变化的吧！</p>
 <p><strong>3.2.1平移距离在(0,0.2]的范围内时</strong></p>
-<p><img src="http://i.imgur.com/ohP8VAU.gif" alt=""></p>
+<p><img src="http://i.imgur.com/ohP8VAU.gif" alt></p>
 <p>p2点在这个状态的中从(R,0)变成了(9/5 *R,0),<strong>positionOffset / 0.2f为这个区间(0,0.2]的变化率</strong>。</p>
 <blockquote>
 <p>x = R + 4 / 5.0f <em> R </em> P,P是变化率也就是positionOffset / 0.2f</p>
@@ -133,18 +133,18 @@ private void buildCircle1(float positionOffset) {   //0 &lt; pos &lt;=0.2f
 
     p2.setX(R + 4 / 5.0f * R * positionOffset / 0.2f);
 }
-</code></pre><p>如果对上面的公式或者注释你还是无法有一个直观的理解，可以结合下面的图来进行进一步的加深<br><img src="http://i.imgur.com/GdUdPvK.png" alt=""></p>
+</code></pre><p>如果对上面的公式或者注释你还是无法有一个直观的理解，可以结合下面的图来进行进一步的加深<br><img src="http://i.imgur.com/GdUdPvK.png" alt></p>
 <p>在buildCircle1中我们做的就是将P2点的坐标不断进行水平移动，从而让小球从状态1变化到了状态2了。</p>
 <p><strong>3.2.2平移距离在(0.2,0.5]的范围内时</strong></p>
-<p><img src="http://i.imgur.com/mqA6dSV.gif" alt=""></p>
-<p>在这个过程中我们需要将小球进行变化成一个椭圆<br>通过下图我们可以看到如果单纯将P2点垂直方向上的控制点的距离进行增大，图形的右边就更加的椭圆了，因为要对称，所以同时改变P2点和p4的垂直方向上M的距离，就可以让这两边的曲线更加接近椭圆。<br><img src="http://i.imgur.com/REGqLHG.png" alt=""></p>
+<p><img src="http://i.imgur.com/mqA6dSV.gif" alt></p>
+<p>在这个过程中我们需要将小球进行变化成一个椭圆<br>通过下图我们可以看到如果单纯将P2点垂直方向上的控制点的距离进行增大，图形的右边就更加的椭圆了，因为要对称，所以同时改变P2点和p4的垂直方向上M的距离，就可以让这两边的曲线更加接近椭圆。<br><img src="http://i.imgur.com/REGqLHG.png" alt></p>
 <p>但是还有一个问题，图形目前是不对称的，在上一个状态中我们移动了p2点的坐标R-&gt;9/5R，因此要让P2和p4对称，因此p1和p3也要同时进行移动，让其两点的x轴的坐标移动到新的中心点坐标。</p>
 <p><strong>新的中心点在哪里？</strong></p>
 <p>我们重新来看下坐标<br>P1(0,R)，P2(5/9R,0),P3(0，-R),P4（-R,0）<br>新的中心点的x轴的坐标为</p>
 <blockquote>
 <p>x = (p4.x + (p2.x - p4.x) / 2) * P</p>
 </blockquote>
-<p>我们可以看到公式中有一个除2的操作，为什么要除2呢?<br><img src="http://i.imgur.com/Q6tTjLZ.png" alt=""></p>
+<p>我们可以看到公式中有一个除2的操作，为什么要除2呢?<br><img src="http://i.imgur.com/Q6tTjLZ.png" alt></p>
 <p><strong>可以看到正方形，通过将右边的左边的点进行平移1个单位后</strong>,中心点从(0,0)变化至(0.5,0)。通过这个公式p4.x + (p2.x - p4.x) / 2,这里我们将p2.x = 2，p4.x = -1，通过计算得出了0.5，因此这就是为什么要这么写的原因了。</p>
 <p>下面是代码：</p>
 <pre><code>/**
@@ -167,7 +167,7 @@ private void buildCircle2(float positionOffset) {   //0.2 &lt; pos &lt;= 0.5f
     p2.setM(m);
 }
 </code></pre><p><strong>3.2.3平移距离在(0.5,0.8]的范围内时</strong></p>
-<p><img src="http://i.imgur.com/3GKt8Rv.gif" alt=""></p>
+<p><img src="http://i.imgur.com/3GKt8Rv.gif" alt></p>
 <p>在这个过程中我们需要将椭圆变成如我们状态2那样子的有一头比较尖的圆形。</p>
 <p>p2.x从9/5R 变化至 R</p>
 <p>p4.x从-R 变化至 -9/5R</p>
@@ -194,7 +194,7 @@ private void buildCircle3(float positionOffset) {       //0.5 - 0.8f
     p2.setX(p2X);
 }
 </code></pre><p><strong>3.2.4恢复成圆形(0.8,0.9]</strong></p>
-<p><img src="http://i.imgur.com/AZFm3Sd.gif" alt=""></p>
+<p><img src="http://i.imgur.com/AZFm3Sd.gif" alt></p>
 <p>p4.x 从-9/5R 变化至 -R。并且重置一下p1、p2、p3的坐标</p>
 <pre><code>private void buildCircle4(float positionOffset) {       //0.8 - 1.0
     float p4X = -9 / 5.f * R + 4 / 5.f * R * (positionOffset - 0.8f) / 0.2f;
@@ -205,17 +205,17 @@ private void buildCircle3(float positionOffset) {       //0.5 - 0.8f
     p2.setX(R);
 }
 </code></pre><p><strong>3.2.5让小球进行回弹起来吧[0.9,1.0]</strong></p>
-<p><img src="http://i.imgur.com/kwXQmEN.gif" alt=""></p>
+<p><img src="http://i.imgur.com/kwXQmEN.gif" alt></p>
 <pre><code>double value = Math.sin(Math.toRadians((positionOffset - 0.9f) / 0.1f * 180));
 
 p4.setX((float) (-R +  R / 2.0f * value));
-</code></pre><p>为社么这里使用了sin函数呢?<br><img src="http://i.imgur.com/L0qETmy.jpg" alt=""></p>
+</code></pre><p>为社么这里使用了sin函数呢?<br><img src="http://i.imgur.com/L0qETmy.jpg" alt></p>
 <p><strong>在sin函数中x在[0，π/2]y轴的变化过程是[0,1]，x在[π/2，π]之间y轴的变化过程是[1,0]，这个y轴的变化过程正好满足我们这里回弹过程的变化率！！！因此使用sin作为这里控制回弹效果的产生是再合适不过的了。</strong></p>
 <p><strong>3.2.6让小球进行平移</strong></p>
 <p>前面我们都是通过改变p1,p2,p3,p4的坐标来改变小球的形状，然而还要进行添加位移，这样才能形成一个完整的动画，我在这里有两个思路</p>
 <p>1.通过drawPath方法，不断地改变小球的x,y的位置来进行，然而这个的代价就是所有的坐标点都需要进行变化加上平移距离，得出最后的点的坐标</p>
 <p>2.通过Canvas的translate方法，移动画布来达到我们这里平移动画的产生效果，显然，这一种方法我们不需要进行坐标转变即可完成动画效果，因为本控件也是采用了这一种方案。</p>
-<p><img src="http://i.imgur.com/cOCWL6Q.png" alt=""></p>
+<p><img src="http://i.imgur.com/cOCWL6Q.png" alt></p>
 <pre><code>canvas.save();
 
 
@@ -250,9 +250,9 @@ public void onPageScrolled(int position, float positionOffset, int positionOffse
     }
 }
 </code></pre><p>在这里我们先来看一下ViewPager数值的变化规律:<br>这是从左向右滑动的时候,从第0页向第一页滑动position从0变化到1，positionOffset:0.0到0.999最后在完成翻页了之后变成了0.0.</p>
-<p><img src="http://i.imgur.com/h5iaGTj.png" alt=""></p>
+<p><img src="http://i.imgur.com/h5iaGTj.png" alt></p>
 <p>这是从右向左滑动的时候</p>
-<p><img src="http://i.imgur.com/p32wjpw.png" alt=""></p>
+<p><img src="http://i.imgur.com/p32wjpw.png" alt></p>
 <pre><code>boolean right = position + positionOffset - mCurrentPosition &gt; 0;
 if (positionOffset != 0.0f) {
     //位移未完成
@@ -341,7 +341,7 @@ private void startWave() {
     valueAnimator.start();
 }
 </code></pre><p>通过改变R的半径以及画笔的粗细程度，即可完成了这一效果的绘制过程</p>
-<p><img src="http://i.imgur.com/nBVpmbw.gif" alt=""></p>
+<p><img src="http://i.imgur.com/nBVpmbw.gif" alt></p>
 <h3 id="3-4-点击产生的位移"><a href="#3-4-点击产生的位移" class="headerlink" title="3.4 点击产生的位移"></a>3.4 点击产生的位移</h3><p>上面我们看到点击后通过属性动画完成涟漪效果的显示，<strong>同样我们可以利用属性动画，让其模拟viewPager的参数的变化过程，这样之前的ViewPager函数就可以进行调用就行了</strong>。</p>
 <pre><code>private void startMoveBezierCircleByTouch(final int formPos, final int toPos) {
     if (formPos == toPos) return;
@@ -387,7 +387,7 @@ private void startWave() {
     4.如何让小球不断的进行变化？
     5.如何生成点击后的涟漪效果？
 }while(不懂);
-</code></pre><p><img src="http://i.imgur.com/dhsnvVB.png" alt=""></p>
+</code></pre><p><img src="http://i.imgur.com/dhsnvVB.png" alt></p>
 <p>最后非常感谢<strong><em>陈宇明</em></strong>大佬的细心指导,文章的结构顺序、还有内容都一一进行指正和阅读，很多地方都是根据其建议进行修改的。</p>
 <p>本篇的分析就到此为止了，后面我会抽时间不断的完善这个demo，如果你有好的建议，请加Bravh交流群和我一起交流/学习，我在等你哟~！</p>
 <h3 id="本项目地址"><a href="#本项目地址" class="headerlink" title="本项目地址"></a>本项目地址</h3><blockquote>
@@ -398,7 +398,7 @@ private void startWave() {
 <p><a href="http://www.jianshu.com/p/791d3a791ec2" target="_blank" rel="noopener">http://www.jianshu.com/p/791d3a791ec2</a></p>
 <p><a href="https://github.com/Ulez/DropIndicator" target="_blank" rel="noopener">https://github.com/Ulez/DropIndicator</a></p>
 </blockquote>
-</div></article></div></main><footer><div class="paginator"><a href="/2017/09/06/记录-DockerCE安装/" class="prev">上一篇</a><a href="/2017/05/28/编写一个编译时注入框架/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'keep2iron';
+</div></article></div></main><footer><div class="paginator"><a href="/2017/09/06/记录-DockerCE安装/" class="prev">PREV</a><a href="/2017/05/28/编写一个编译时注入框架/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'keep2iron';
 var disqus_identifier = '2017/07/31/炫酷ViewPager指示器效果/';
 var disqus_title = '炫酷ViewPager指示器效果';
 var disqus_url = 'https://keep2iron.github.io/2017/07/31/炫酷ViewPager指示器效果/';
